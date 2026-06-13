@@ -1,0 +1,414 @@
+{
+  "meta": {
+    "projeto": "Forzy Digital Twin",
+    "sprint": 1,
+    "versao": "1.0.0",
+    "total_termos": 40,
+    "categorias": [
+      "parametro_eletrico",
+      "parametro_operacional",
+      "componente_mecanico",
+      "componente_eletrico",
+      "tipo_falha",
+      "parametro_construtivo",
+      "fabricante",
+      "norma_certificacao"
+    ],
+    "referencias": ["IEC 60034", "NEMA MG 1", "NBR 5383", "ISO 10816"]
+  },
+  "termos": {
+    "tensao": {
+      "pt": "tensão",
+      "en": "voltage",
+      "abreviacoes": ["tens.", "V", "kV", "Un"],
+      "unidade": "V",
+      "definicao_pt": "Diferença de potencial elétrico aplicada aos terminais do motor.",
+      "definicao_en": "Electric potential difference applied to motor terminals.",
+      "categoria": "parametro_eletrico",
+      "valores_tipicos": ["220V", "380V", "440V", "460V", "690V", "2300V", "4160V"],
+      "norma_ref": "IEC 60038"
+    },
+    "corrente": {
+      "pt": "corrente",
+      "en": "current",
+      "abreviacoes": ["corr.", "In", "A", "amp."],
+      "unidade": "A",
+      "definicao_pt": "Fluxo de elétrons que percorre os enrolamentos do motor em regime nominal.",
+      "definicao_en": "Electron flow through motor windings at rated operation.",
+      "categoria": "parametro_eletrico",
+      "valores_tipicos": ["10A", "50A", "100A", "200A"],
+      "norma_ref": "IEC 60034-1"
+    },
+    "potencia": {
+      "pt": "potência",
+      "en": "power",
+      "abreviacoes": ["pot.", "P", "kW", "HP", "cv", "Pn"],
+      "unidade": "kW ou HP",
+      "definicao_pt": "Capacidade de trabalho mecânico do motor por unidade de tempo no eixo.",
+      "definicao_en": "Mechanical work capacity at motor shaft per unit time.",
+      "categoria": "parametro_eletrico",
+      "conversao": "1 HP = 0.7457 kW = 1.0139 cv",
+      "norma_ref": "IEC 60034-1"
+    },
+    "frequencia": {
+      "pt": "frequência",
+      "en": "frequency",
+      "abreviacoes": ["freq.", "f", "Hz"],
+      "unidade": "Hz",
+      "definicao_pt": "Frequência da tensão de alimentação da rede. No Brasil: 60 Hz.",
+      "definicao_en": "Supply voltage frequency. Brazil standard: 60 Hz.",
+      "categoria": "parametro_eletrico",
+      "valores_tipicos": ["50Hz", "60Hz"],
+      "norma_ref": "IEC 60034-1"
+    },
+    "fator_potencia": {
+      "pt": "fator de potência",
+      "en": "power factor",
+      "abreviacoes": ["FP", "cos φ", "pf"],
+      "unidade": "adimensional (0–1)",
+      "definicao_pt": "Relação entre potência ativa e potência aparente do motor.",
+      "definicao_en": "Ratio of active power to apparent power.",
+      "categoria": "parametro_eletrico",
+      "norma_ref": "IEC 60034-30"
+    },
+    "rendimento": {
+      "pt": "rendimento",
+      "en": "efficiency",
+      "abreviacoes": ["η", "rend.", "eff."],
+      "unidade": "%",
+      "definicao_pt": "Razão entre potência mecânica no eixo e potência elétrica consumida.",
+      "definicao_en": "Ratio of shaft mechanical power to electrical input power.",
+      "categoria": "parametro_eletrico",
+      "norma_ref": "IEC 60034-30-1"
+    },
+    "rotacao": {
+      "pt": "rotação",
+      "en": "rotation speed",
+      "abreviacoes": ["rot.", "n", "rpm", "RPM"],
+      "unidade": "rpm",
+      "definicao_pt": "Velocidade angular do eixo do motor em rotações por minuto.",
+      "definicao_en": "Angular velocity of motor shaft in revolutions per minute.",
+      "categoria": "parametro_operacional",
+      "valores_tipicos": ["900rpm", "1200rpm", "1800rpm", "3600rpm"],
+      "obs": "Velocidade síncrona ns = 60f/p; velocidade nominal considera escorregamento."
+    },
+    "temperatura": {
+      "pt": "temperatura",
+      "en": "temperature",
+      "abreviacoes": ["temp.", "T", "°C", "Tamb"],
+      "unidade": "°C",
+      "definicao_pt": "Temperatura de operação do motor ou de seus componentes internos.",
+      "definicao_en": "Operating temperature of motor or its internal components.",
+      "categoria": "parametro_operacional",
+      "norma_ref": "IEC 60034-1"
+    },
+    "vibracao": {
+      "pt": "vibração",
+      "en": "vibration",
+      "abreviacoes": ["vib.", "vibr."],
+      "unidade": "mm/s RMS ou g",
+      "definicao_pt": "Oscilação mecânica do motor; indicador primário de falhas em rolamentos e desbalanceamento.",
+      "definicao_en": "Mechanical oscillation of motor; primary indicator of bearing faults and unbalance.",
+      "categoria": "parametro_operacional",
+      "limites": {
+        "ISO_10816_zona_A": "< 2.3 mm/s",
+        "ISO_10816_zona_B": "2.3 – 4.5 mm/s",
+        "ISO_10816_zona_C": "4.5 – 7.1 mm/s",
+        "ISO_10816_zona_D": "> 7.1 mm/s (parada)"
+      },
+      "norma_ref": "ISO 10816-3"
+    },
+    "torque": {
+      "pt": "torque",
+      "en": "torque",
+      "abreviacoes": ["T", "Nm", "kgf.m"],
+      "unidade": "N·m",
+      "definicao_pt": "Momento de força exercido pelo eixo do motor.",
+      "definicao_en": "Rotational force exerted by motor shaft.",
+      "categoria": "parametro_operacional"
+    },
+    "rolamento": {
+      "pt": "rolamento",
+      "en": "bearing",
+      "abreviacoes": ["rol.", "brg."],
+      "unidade": null,
+      "definicao_pt": "Componente mecânico que suporta o eixo e reduz o atrito rotativo. Tipos: esfera, rolo, agulha.",
+      "definicao_en": "Mechanical component supporting shaft and reducing rotational friction. Types: ball, roller, needle.",
+      "categoria": "componente_mecanico",
+      "fabricantes_ref": ["SKF", "FAG", "NSK", "NTN", "TIMKEN"],
+      "codigos_comuns": ["6205", "6305", "6308", "22308", "NU318"],
+      "norma_ref": "ISO 15"
+    },
+    "eixo": {
+      "pt": "eixo",
+      "en": "shaft",
+      "abreviacoes": [],
+      "unidade": null,
+      "definicao_pt": "Elemento rotativo que transmite o torque do motor para a carga.",
+      "definicao_en": "Rotating element transmitting motor torque to the load.",
+      "categoria": "componente_mecanico"
+    },
+    "acoplamento": {
+      "pt": "acoplamento",
+      "en": "coupling",
+      "abreviacoes": ["acop."],
+      "unidade": null,
+      "definicao_pt": "Dispositivo mecânico que conecta o eixo do motor ao eixo da carga.",
+      "definicao_en": "Mechanical device connecting motor shaft to load shaft.",
+      "categoria": "componente_mecanico",
+      "tipos": ["rígido", "elástico", "de membrana", "de dentes"]
+    },
+    "mancal": {
+      "pt": "mancal",
+      "en": "bearing housing",
+      "abreviacoes": [],
+      "unidade": null,
+      "definicao_pt": "Suporte estrutural que aloja o rolamento e o eixo, posicionando-os no estator.",
+      "definicao_en": "Structural support housing the bearing and shaft within the stator frame.",
+      "categoria": "componente_mecanico"
+    },
+    "ventoinha": {
+      "pt": "ventoinha",
+      "en": "cooling fan",
+      "abreviacoes": ["vent."],
+      "unidade": null,
+      "definicao_pt": "Componente responsável pela circulação de ar para resfriamento do motor.",
+      "definicao_en": "Component responsible for air circulation to cool the motor.",
+      "categoria": "componente_mecanico"
+    },
+    "estator": {
+      "pt": "estator",
+      "en": "stator",
+      "abreviacoes": [],
+      "unidade": null,
+      "definicao_pt": "Parte estacionária do motor que contém os enrolamentos de fase indutores do campo magnético.",
+      "definicao_en": "Stationary motor part containing phase windings that induce the magnetic field.",
+      "categoria": "componente_eletrico"
+    },
+    "rotor": {
+      "pt": "rotor",
+      "en": "rotor",
+      "abreviacoes": [],
+      "unidade": null,
+      "definicao_pt": "Parte giratória do motor. Em motores de indução: gaiola de esquilo ou rotor bobinado.",
+      "definicao_en": "Rotating motor part. In induction motors: squirrel cage or wound rotor.",
+      "categoria": "componente_eletrico",
+      "tipos": ["gaiola de esquilo", "rotor bobinado", "rotor de ímã permanente"]
+    },
+    "enrolamento": {
+      "pt": "enrolamento",
+      "en": "winding",
+      "abreviacoes": ["enrol.", "wind."],
+      "unidade": null,
+      "definicao_pt": "Conjunto de condutores de cobre dispostos em ranhuras do núcleo magnético do estator ou rotor.",
+      "definicao_en": "Set of copper conductors arranged in slots of stator or rotor magnetic core.",
+      "categoria": "componente_eletrico"
+    },
+    "isolamento": {
+      "pt": "isolamento",
+      "en": "insulation",
+      "abreviacoes": ["isol.", "ins."],
+      "unidade": "MΩ",
+      "definicao_pt": "Material dielétrico que protege os enrolamentos; classificado por temperatura máxima de operação.",
+      "definicao_en": "Dielectric material protecting windings; classified by maximum operating temperature.",
+      "categoria": "componente_eletrico",
+      "classes": {
+        "A": "105°C",
+        "B": "130°C",
+        "F": "155°C",
+        "H": "180°C"
+      },
+      "norma_ref": "IEC 60085"
+    },
+    "curto_circuito": {
+      "pt": "curto-circuito",
+      "en": "short circuit",
+      "abreviacoes": ["cc", "sc"],
+      "unidade": null,
+      "definicao_pt": "Falha elétrica por contato indevido entre condutores, causando corrente elevada.",
+      "definicao_en": "Electrical fault from unintended conductor contact, causing excessive current.",
+      "categoria": "tipo_falha",
+      "subtipos": ["entre_espiras", "entre_fases", "fase_terra"]
+    },
+    "sobretensao": {
+      "pt": "sobretensão",
+      "en": "overvoltage",
+      "abreviacoes": ["OV"],
+      "unidade": "V",
+      "definicao_pt": "Tensão de alimentação acima do valor nominal, podendo danificar o isolamento.",
+      "definicao_en": "Supply voltage above rated value, potentially damaging insulation.",
+      "categoria": "tipo_falha"
+    },
+    "subtensao": {
+      "pt": "subtensão",
+      "en": "undervoltage",
+      "abreviacoes": ["UV"],
+      "unidade": "V",
+      "definicao_pt": "Tensão de alimentação abaixo do nominal, causando aumento de corrente e aquecimento.",
+      "definicao_en": "Supply voltage below rated value, causing current increase and overheating.",
+      "categoria": "tipo_falha"
+    },
+    "sobrecorrente": {
+      "pt": "sobrecorrente",
+      "en": "overcurrent",
+      "abreviacoes": ["OC", "OL"],
+      "unidade": "A",
+      "definicao_pt": "Corrente acima do valor nominal, geralmente indicando sobrecarga mecânica.",
+      "definicao_en": "Current above rated value, usually indicating mechanical overload.",
+      "categoria": "tipo_falha"
+    },
+    "desalinhamento": {
+      "pt": "desalinhamento",
+      "en": "misalignment",
+      "abreviacoes": [],
+      "unidade": "mm",
+      "definicao_pt": "Deslocamento angular ou radial entre eixos do motor e da carga.",
+      "definicao_en": "Angular or radial displacement between motor and load shafts.",
+      "categoria": "tipo_falha",
+      "tipos": ["angular", "radial", "combinado"]
+    },
+    "desbalanceamento": {
+      "pt": "desbalanceamento",
+      "en": "unbalance",
+      "abreviacoes": [],
+      "unidade": "g·mm",
+      "definicao_pt": "Distribuição não uniforme de massa no rotor, gerando vibração na frequência de rotação.",
+      "definicao_en": "Non-uniform mass distribution on rotor, generating vibration at rotation frequency.",
+      "categoria": "tipo_falha",
+      "norma_ref": "ISO 1940-1"
+    },
+    "desgaste": {
+      "pt": "desgaste",
+      "en": "wear",
+      "abreviacoes": [],
+      "unidade": null,
+      "definicao_pt": "Deterioração progressiva de superfícies por atrito, corrosão ou fadiga.",
+      "definicao_en": "Progressive surface deterioration by friction, corrosion or fatigue.",
+      "categoria": "tipo_falha"
+    },
+    "superaquecimento": {
+      "pt": "superaquecimento",
+      "en": "overheating",
+      "abreviacoes": ["OT"],
+      "unidade": "°C",
+      "definicao_pt": "Temperatura acima do limite da classe de isolamento, acelerando degradação.",
+      "definicao_en": "Temperature above insulation class limit, accelerating degradation.",
+      "categoria": "tipo_falha"
+    },
+    "classe_isolamento": {
+      "pt": "classe de isolamento",
+      "en": "insulation class",
+      "abreviacoes": ["class.", "ins. class"],
+      "unidade": null,
+      "definicao_pt": "Classificação do sistema de isolamento pela temperatura máxima de operação (IEC 60085).",
+      "definicao_en": "Insulation system classification by maximum operating temperature (IEC 60085).",
+      "categoria": "parametro_construtivo",
+      "valores": ["A (105°C)", "B (130°C)", "F (155°C)", "H (180°C)"],
+      "norma_ref": "IEC 60085"
+    },
+    "grau_protecao": {
+      "pt": "grau de proteção",
+      "en": "protection degree",
+      "abreviacoes": ["IP", "NEMA"],
+      "unidade": null,
+      "definicao_pt": "Nível de proteção contra sólidos e líquidos (IEC 60529: IP23, IP44, IP55, IP65, IP66).",
+      "definicao_en": "Protection level against solids and liquids (IEC 60529: IP23, IP44, IP55, IP65, IP66).",
+      "categoria": "parametro_construtivo",
+      "valores_comuns": ["IP23", "IP44", "IP54", "IP55", "IP65", "IP66"],
+      "norma_ref": "IEC 60529"
+    },
+    "numero_polos": {
+      "pt": "número de polos",
+      "en": "number of poles",
+      "abreviacoes": ["p", "polos"],
+      "unidade": null,
+      "definicao_pt": "Quantidade de pares de polos magnéticos. Define a velocidade síncrona: ns = 60f/p.",
+      "definicao_en": "Number of magnetic pole pairs. Defines synchronous speed: ns = 60f/p.",
+      "categoria": "parametro_construtivo",
+      "valores_comuns": [2, 4, 6, 8],
+      "velocidades_60hz": {"2p": "3600rpm", "4p": "1800rpm", "6p": "1200rpm", "8p": "900rpm"}
+    },
+    "trifasico": {
+      "pt": "trifásico",
+      "en": "three-phase",
+      "abreviacoes": ["3F", "3ph", "3Φ"],
+      "unidade": null,
+      "definicao_pt": "Sistema de alimentação com três fases defasadas em 120° entre si.",
+      "definicao_en": "Power supply system with three phases displaced by 120° from each other.",
+      "categoria": "parametro_construtivo"
+    },
+    "classe_eficiencia": {
+      "pt": "classe de eficiência",
+      "en": "efficiency class",
+      "abreviacoes": ["IE", "EFF"],
+      "unidade": null,
+      "definicao_pt": "Classificação de rendimento energético do motor (IE1 a IE5).",
+      "definicao_en": "Motor energy efficiency classification (IE1 to IE5).",
+      "categoria": "parametro_construtivo",
+      "valores": ["IE1 (Standard)", "IE2 (High)", "IE3 (Premium)", "IE4 (Super Premium)", "IE5 (Ultra Premium)"],
+      "norma_ref": "IEC 60034-30-1"
+    },
+    "WEG": {
+      "pt": "WEG",
+      "en": "WEG",
+      "abreviacoes": ["Weg", "weg", "WEG S.A."],
+      "unidade": null,
+      "definicao_pt": "Fabricante brasileiro de motores elétricos. Sede: Jaraguá do Sul, SC. Principal fornecedor no Brasil.",
+      "definicao_en": "Brazilian electric motor manufacturer. HQ: Jaraguá do Sul, SC. Leading Brazilian supplier.",
+      "categoria": "fabricante",
+      "linhas_produto": ["W21", "W22", "W23", "HGF", "WIMES"]
+    },
+    "SIEMENS": {
+      "pt": "SIEMENS",
+      "en": "SIEMENS",
+      "abreviacoes": ["Siemens", "siemens AG"],
+      "unidade": null,
+      "definicao_pt": "Fabricante alemão. Linhas de motor: SIMOTICS, 1LE1, 1LA.",
+      "definicao_en": "German manufacturer. Motor lines: SIMOTICS, 1LE1, 1LA.",
+      "categoria": "fabricante"
+    },
+    "ABB": {
+      "pt": "ABB",
+      "en": "ABB",
+      "abreviacoes": ["Abb", "A.B.B."],
+      "unidade": null,
+      "definicao_pt": "Fabricante suíço-sueco. Linhas: M3BP, M3AA, HXR.",
+      "definicao_en": "Swiss-Swedish manufacturer. Lines: M3BP, M3AA, HXR.",
+      "categoria": "fabricante"
+    },
+    "IEC": {
+      "pt": "IEC",
+      "en": "IEC",
+      "abreviacoes": ["IEC 60034"],
+      "unidade": null,
+      "definicao_pt": "International Electrotechnical Commission — normas para máquinas elétricas girantes.",
+      "definicao_en": "International Electrotechnical Commission — standards for rotating electrical machines.",
+      "categoria": "norma_certificacao"
+    },
+    "NEMA": {
+      "pt": "NEMA",
+      "en": "NEMA",
+      "abreviacoes": ["NEMA MG 1"],
+      "unidade": null,
+      "definicao_pt": "National Electrical Manufacturers Association — padrão norte-americano para motores.",
+      "definicao_en": "National Electrical Manufacturers Association — North American motor standard.",
+      "categoria": "norma_certificacao"
+    }
+  },
+  "vocabulario_controlado": {
+    "fabricantes": ["WEG", "SIEMENS", "ABB", "GE", "BALDOR", "VOITH", "NIDEC", "LEROY-SOMER"],
+    "classes_isolamento": ["A", "B", "F", "H"],
+    "classes_eficiencia": ["IE1", "IE2", "IE3", "IE4", "IE5"],
+    "graus_protecao": ["IP23", "IP44", "IP54", "IP55", "IP65", "IP66", "IP67"],
+    "tipos_motor": ["trifasico", "monofasico", "cc", "síncrono", "passo"],
+    "fontes_documento": ["placa", "manual", "cadastro_erp", "log_operacao", "laudo_tecnico"],
+    "categorias_documento": ["nameplate", "ordem_servico", "laudo", "ficha_cadastro", "log_alarme"],
+    "tipos_tag": {
+      "MT": "Motor Trifásico",
+      "MB": "Motor de Bomba",
+      "MC": "Motor de Compressor",
+      "MV": "Motor de Ventilador",
+      "GE": "Gerador Elétrico"
+    }
+  }
+}
